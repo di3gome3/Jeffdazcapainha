@@ -1,0 +1,777 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Jeffdazcapinha · Assistência técnica e acessórios</title>
+  <meta name="description" content="Assistência técnica para iPhone e Android: troca de tela, bateria, vidro e tampa, reparo em placa, câmeras, dock de carga e Face ID. Orçamento e catálogo de acessórios pelo WhatsApp.">
+  <meta name="theme-color" content="#0b0c0b">
+  <link rel="icon" href="brand/logo-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400..700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0c0b;
+      --bg-2: #101210;
+      --surface: #141614;
+      --surface-2: #1a1d1a;
+      --line: rgba(255, 255, 255, .08);
+      --line-2: rgba(255, 255, 255, .14);
+      --text: #f2f4f1;
+      --text-2: #a3a9a2;
+      --text-3: #878d86;
+      --green: #2be31e;
+      --green-press: #24c618;
+      --green-soft: rgba(43, 227, 30, .1);
+      --green-line: rgba(43, 227, 30, .35);
+      --ink: #0b0c0b;
+      --radius: 12px;
+      --radius-l: 20px;
+      --font: "Archivo", system-ui, sans-serif;
+      --ease: cubic-bezier(.16, 1, .3, 1);
+      --wrap: 1200px;
+      --gutter: clamp(16px, 4vw, 40px);
+      color-scheme: dark;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 84px; -webkit-text-size-adjust: 100%; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; transition-property: color, background-color, border-color, fill, stroke, opacity, visibility !important; }
+    }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 1.0625rem;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: clip;
+    }
+    ::selection { background: var(--green); color: var(--ink); }
+    input, textarea { caret-color: var(--green); }
+    html { scrollbar-color: #2a2e2a var(--bg); }
+    a { color: inherit; text-underline-offset: .2em; text-decoration-thickness: 1px; }
+    :focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-radius: 6px; }
+    img { display: block; max-width: 100%; }
+    svg { flex: none; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    .wrap { width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
+
+    /* aviso de protótipo */
+    .proto { margin: 0; padding: 8px var(--gutter); background: var(--bg-2); border-bottom: 1px solid var(--line); font-size: .8125rem; color: var(--text-2); text-align: center; }
+    .proto b { color: var(--text); font-weight: 600; }
+    .proto-curto { display: none; }
+
+    /* cabeçalho */
+    .topo {
+      position: sticky; top: 0; z-index: 40;
+      background: rgba(11, 12, 11, .82);
+      backdrop-filter: saturate(140%) blur(14px);
+      -webkit-backdrop-filter: saturate(140%) blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .topo .wrap { display: flex; align-items: center; gap: 28px; height: 68px; }
+    .marca { display: block; padding: 6px 0; }
+    .marca img { height: 32px; width: auto; }
+    .nav { display: flex; gap: 4px; margin: 0 0 0 auto; list-style: none; padding: 0; }
+    .nav a { display: block; padding: 10px 14px; border-radius: 8px; font-size: .9375rem; font-weight: 500; color: var(--text-2); text-decoration: none; transition: color .2s, background-color .2s; }
+    .nav a:hover { color: var(--text); background: var(--surface-2); }
+
+    /* botões */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 52px; padding: 0 22px;
+      border: 0; border-radius: 10px;
+      font: inherit; font-size: 1rem; font-weight: 600; line-height: 1.2;
+      text-decoration: none; cursor: pointer;
+      transition: background-color .2s, color .2s, transform .2s var(--ease);
+    }
+    .btn svg { width: 20px; height: 20px; }
+    .btn:active { transform: translateY(1px); }
+    .btn-primary { background: var(--green); color: var(--ink); }
+    .btn-primary:hover { background: var(--green-press); }
+    .btn-primary:focus-visible { outline-color: var(--text); }
+    .btn-secondary { background: var(--surface-2); color: var(--text); box-shadow: inset 0 0 0 1px var(--line-2); }
+    .btn-secondary:hover { background: #222622; }
+    .btn-sm { min-height: 44px; padding: 0 16px; font-size: .9375rem; border-radius: 8px; }
+
+    /* hero */
+    .hero { padding: clamp(28px, 5vw, 56px) 0 clamp(56px, 8vw, 104px); }
+    .hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 500px); gap: clamp(32px, 5vw, 72px); align-items: start; }
+    .hero h1 { margin: 0 0 16px; font-size: clamp(2.375rem, 4.6vw, 4rem); font-weight: 700; line-height: 1.02; letter-spacing: -0.035em; text-wrap: balance; }
+    .hero h1 em { font-style: normal; color: var(--green); }
+    .hero .lead { margin: 0 0 20px; max-width: 44ch; font-size: clamp(1.0625rem, 1.4vw, 1.1875rem); color: var(--text-2); }
+    .direto { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin: 0; font-size: .9375rem; color: var(--text-3); }
+    .direto span { margin-right: 4px; }
+
+    /* desenho: o celular aberto na bancada */
+    .desenho { position: relative; max-width: 600px; aspect-ratio: 600 / 380; margin-top: clamp(28px, 4vw, 44px); }
+    .desenho > svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+    .desenho > svg *:not(.racha):not(.guia) { vector-effect: non-scaling-stroke; }
+    .corpo { fill: var(--bg); stroke: rgba(255, 255, 255, .3); stroke-width: 1.5; }
+    .corpo-in { fill: none; stroke: var(--line-2); stroke-width: 1; }
+    .flex { fill: none; stroke: rgba(255, 255, 255, .22); stroke-width: 5; stroke-linecap: round; }
+    .furo { fill: rgba(255, 255, 255, .22); }
+    [data-peca] { fill: rgba(255, 255, 255, .02); stroke: var(--text-2); stroke-width: 1.5; stroke-linejoin: round; stroke-linecap: round; cursor: pointer; transition: stroke .25s, fill .25s; }
+    [data-peca] .vazio { fill: none; }
+    [data-peca]:hover { stroke: var(--text); }
+    [data-peca].on { stroke: var(--green); fill: var(--green-soft); }
+    .guia { fill: none; stroke: var(--line-2); stroke-width: 1.4; stroke-dasharray: 1; transition: stroke .25s; }
+    .guia-ponto { fill: var(--text-3); transition: fill .25s; }
+    .guia.on { stroke: var(--green-line); }
+    .guia-ponto.on { fill: var(--green); }
+    .peca-btn { position: absolute; display: inline-flex; align-items: center; gap: 6px; min-height: 34px; padding: 0 10px 0 12px; border-radius: 999px; border: 1px solid var(--line-2); background: var(--bg); color: var(--text); font: inherit; font-size: .875rem; font-weight: 600; line-height: 1; white-space: nowrap; cursor: pointer; translate: 0 -50%; transition: background-color .2s, border-color .2s, color .2s; }
+    .peca-btn svg { width: 14px; height: 14px; color: var(--text-2); }
+    .peca-btn .ok { display: none; }
+    .peca-btn:hover { border-color: rgba(255, 255, 255, .3); }
+    .peca-btn[aria-pressed="true"] { background: var(--green); border-color: var(--green); color: var(--ink); }
+    .peca-btn[aria-pressed="true"] svg { color: var(--ink); }
+    .peca-btn[aria-pressed="true"] .mais-ico { display: none; }
+    .peca-btn[aria-pressed="true"] .ok { display: block; }
+    .peca-btn::after { content: ""; position: absolute; inset: -6px -4px; }
+    .peca-btn--centro { translate: -50% -50%; }
+    .so-curto { display: none; }
+    .desenho-nota { margin: 10px 0 0; font-size: .8125rem; color: var(--text-3); }
+    /* momento autoral: o celular abre como um livro, a tela trincada aparece,
+       as linhas guia saem de cada peça e as etiquetas chegam em seguida.
+       Tudo parte do estado final visível: sem JS ou com movimento reduzido, nada some. */
+    .racha { stroke-dasharray: 1; stroke-width: 1.6; }
+    .js .desenho:not(.pronto) .tela-g { animation: abrir 1s var(--ease) .2s both; }
+    .js .desenho:not(.pronto) .flex { animation: surgir .4s ease-out .85s both; }
+    .js .desenho:not(.pronto) .racha { animation: riscar .55s cubic-bezier(.5, 0, .2, 1) 1.05s both; }
+    .js .desenho:not(.pronto) .guia { animation: riscar .4s var(--ease) calc(1.15s + var(--i) * 70ms) both; }
+    .js .desenho:not(.pronto) .guia-ponto { animation: surgir .3s ease-out calc(1.1s + var(--i) * 70ms) both; }
+    .js .desenho:not(.pronto) .peca-btn { animation: chegar .45s var(--ease) calc(1.3s + var(--i) * 70ms) both; }
+    @keyframes abrir { from { transform: translateX(185px); } }
+    @keyframes surgir { from { opacity: 0; } }
+    @keyframes riscar { from { stroke-dashoffset: 1; } }
+    @keyframes chegar { from { opacity: 0; transform: translateX(-8px); } }
+    /* resposta ao marcar: a peça acende, a guia redesenha em verde, o ✓ aparece */
+    [data-peca].on { animation: acender .7s ease-out; }
+    .guia.on { animation: riscar .45s var(--ease); }
+    @keyframes acender { from { fill: rgba(43, 227, 30, .32); } }
+    @keyframes estalo { from { transform: scale(.4); opacity: 0; } }
+    .peca-btn[aria-pressed="true"] .ok,
+    .srv[aria-pressed="true"] .srv-add .ok { animation: estalo .3s var(--ease); }
+    .etapa.ok .num { animation: estalo .35s var(--ease); }
+    .chip input:checked + span::before { animation: estalo .25s var(--ease); }
+    .outros:not([hidden]) { animation: desdobrar .3s var(--ease); }
+    .previa:not([hidden]) { animation: desdobrar .35s var(--ease); }
+    @keyframes desdobrar { from { opacity: 0; transform: translateY(-6px); } }
+
+    /* orçamento */
+    .orc { background: var(--surface); border: 1px solid var(--line-2); border-radius: var(--radius-l); padding: clamp(20px, 2.6vw, 28px); box-shadow: 0 40px 80px -40px rgba(0, 0, 0, .8); }
+    .orc-topo { margin-bottom: 22px; }
+    .orc-topo h2 { margin: 0 0 4px; font-size: 1.25rem; font-weight: 700; letter-spacing: -0.015em; }
+    .orc-topo p { margin: 0; font-size: .875rem; color: var(--text-3); }
+    .etapas { list-style: none; margin: 0; padding: 0; }
+    .etapa + .etapa { margin-top: 22px; }
+    .num { display: inline-grid; place-items: center; width: 22px; height: 22px; margin-right: 10px; border-radius: 50%; border: 1px solid var(--line-2); font-size: .75rem; font-weight: 700; color: var(--text-2); font-variant-numeric: tabular-nums; vertical-align: 1px; transition: background-color .25s, border-color .25s, color .25s; }
+    .etapa.ok .num { background: var(--green); border-color: var(--green); color: var(--ink); }
+    .campo { display: block; }
+    .rotulo { display: block; margin: 0 0 10px; font-size: .9375rem; font-weight: 600; color: var(--text); }
+    .entrada { width: 100%; font: inherit; font-size: 1rem; color: var(--text); background: var(--bg); border: 1px solid var(--line-2); border-radius: 10px; padding: 13px 14px; transition: border-color .2s, box-shadow .2s; }
+    .entrada::placeholder { color: var(--text-3); }
+    .entrada:hover { border-color: rgba(255, 255, 255, .22); }
+    .entrada:focus-visible { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px var(--green-soft); }
+    .entrada--falta { border-color: var(--text); box-shadow: 0 0 0 3px rgba(255, 255, 255, .12); }
+    textarea.entrada { resize: vertical; min-height: 76px; line-height: 1.45; }
+    .grupo { border: 0; margin: 0; padding: 0; min-width: 0; }
+    .grupo legend { padding: 0; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+    .chip { position: relative; display: block; cursor: pointer; }
+    .chip input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+    .chip span { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--line-2); background: var(--bg); font-size: .9063rem; font-weight: 500; color: var(--text-2); transition: background-color .2s, border-color .2s, color .2s; }
+    .chip span::before { content: ""; flex: none; width: 16px; height: 16px; border-radius: 4px; border: 1.5px solid var(--text-3); background: no-repeat center / 12px 12px; transition: background-color .2s, border-color .2s; }
+    .chip:hover span { border-color: rgba(255, 255, 255, .24); color: var(--text); }
+    .chip input:checked + span { background: var(--green-soft); border-color: var(--green-line); color: var(--text); }
+    .chip input:checked + span::before { background-color: var(--green); border-color: var(--green); background-image: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27%3E%3Cpath d=%27m5 12.5 4.5 4.5L19 7.5%27 fill=%27none%27 stroke=%27%230b0c0b%27 stroke-width=%273.2%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E"); }
+    .chip input:focus-visible + span { outline: 2px solid var(--green); outline-offset: 2px; }
+    .outro { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; margin-top: 4px; padding: 0 2px; border: 0; background: none; font: inherit; font-size: .875rem; font-weight: 600; color: var(--text-2); cursor: pointer; }
+    .outro svg { width: 16px; height: 16px; transition: transform .25s var(--ease); }
+    .outro[aria-expanded="true"] svg { transform: rotate(45deg); }
+    .outro:hover { color: var(--text); }
+    .outros { padding-top: 6px; }
+    .outros .campo { margin-top: 14px; }
+    .outros .rotulo { font-size: .875rem; font-weight: 500; color: var(--text-2); margin-bottom: 8px; }
+    .previa { margin: 0 0 12px; border-radius: 12px; background: var(--bg); border: 1px solid var(--line); }
+    .previa summary { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; cursor: pointer; list-style: none; font-size: .875rem; font-weight: 500; color: var(--text-2); }
+    .previa summary::-webkit-details-marker { display: none; }
+    .previa summary:hover { color: var(--text); }
+    .previa summary .wa { width: 16px; height: 16px; color: var(--green); }
+    .previa summary .seta { width: 16px; height: 16px; margin-left: auto; transition: transform .25s var(--ease); }
+    .previa[open] summary .seta { transform: rotate(45deg); }
+    .previa .balao { margin: 0 14px 14px auto; }
+    .balao { margin: 0 0 0 auto; width: fit-content; max-width: 92%; padding: 10px 12px 8px; border-radius: 12px 12px 4px 12px; background: #17321a; color: #e9f5e7; font-size: .9063rem; line-height: 1.45; white-space: pre-line; overflow-wrap: anywhere; }
+    .balao small { display: block; margin-top: 4px; text-align: right; font-size: .75rem; color: #9fc39a; }
+    .orc .btn { width: 100%; }
+    .orc-nota { margin: 10px 0 0; font-size: .8125rem; color: var(--text-3); text-align: center; }
+    .orc-nota.aviso { color: var(--text); }
+
+    /* seções */
+    .secao { padding: clamp(72px, 10vw, 128px) 0; border-top: 1px solid var(--line); }
+    .secao-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px 48px; align-items: end; margin-bottom: clamp(36px, 5vw, 56px); }
+    .secao-head h2 { margin: 0; font-size: clamp(2rem, 3.8vw, 3rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; text-wrap: balance; }
+    .secao-head p { margin: 0; max-width: 48ch; color: var(--text-2); justify-self: end; }
+
+    /* serviços */
+    .grupos { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+    .grupos .bloco:nth-child(3) { grid-column: 2; grid-row: 1 / span 2; }
+    .bloco { border: 1px solid var(--line); border-radius: var(--radius-l); background: var(--surface); overflow: hidden; }
+    .bloco h3 { margin: 0; padding: 18px 20px 14px; font-size: .8125rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--text-3); border-bottom: 1px solid var(--line); }
+    .bloco ul { list-style: none; margin: 0; padding: 0; }
+    .bloco li + li { border-top: 1px solid var(--line); }
+    .srv { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; gap: 14px; align-items: start; width: 100%; padding: 18px 20px; border: 0; background: transparent; color: inherit; font: inherit; text-align: left; cursor: pointer; transition: background-color .2s; }
+    .srv:hover { background: var(--surface-2); }
+    .srv:focus-visible { outline-offset: -2px; border-radius: 0; }
+    .srv-ico { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 10px; background: var(--bg); border: 1px solid var(--line); color: var(--text); transition: color .2s, border-color .2s; }
+    .srv-ico svg { width: 22px; height: 22px; }
+    .srv-txt b { display: block; font-size: 1rem; font-weight: 600; line-height: 1.3; }
+    .srv-txt > span { display: block; margin-top: 3px; font-size: .9063rem; line-height: 1.45; color: var(--text-2); }
+    .srv-txt i { display: inline-block; margin-top: 8px; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line-2); font-style: normal; font-size: .75rem; font-weight: 500; color: var(--text-2); }
+    .srv-add { display: grid; place-items: center; width: 32px; height: 32px; margin-top: 4px; border-radius: 50%; border: 1px solid var(--line-2); color: var(--text-2); transition: background-color .2s, border-color .2s, color .2s; }
+    .srv-add svg { width: 16px; height: 16px; }
+    .srv-add .ok { display: none; }
+    .srv[aria-pressed="true"] { background: var(--green-soft); }
+    .srv[aria-pressed="true"] .srv-ico { color: var(--green); border-color: var(--green-line); }
+    .srv[aria-pressed="true"] .srv-add { background: var(--green); border-color: var(--green); color: var(--ink); }
+    .srv[aria-pressed="true"] .srv-add .mais-ico { display: none; }
+    .srv[aria-pressed="true"] .srv-add .ok { display: block; }
+    .srv-nota { margin: 28px 0 0; color: var(--text-2); font-size: .9375rem; }
+    .srv-nota a { display: inline-block; padding: 10px 0; margin: -10px 0; color: var(--text); font-weight: 600; text-decoration-color: var(--green); text-decoration-thickness: 2px; }
+
+    /* como funciona */
+    .passos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; list-style: none; margin: 0; padding: 0; counter-reset: passo; }
+    .passo { position: relative; }
+    .passo::before { counter-increment: passo; content: counter(passo); display: grid; place-items: center; width: 30px; height: 30px; margin-bottom: 16px; border-radius: 50%; border: 1px solid var(--line-2); font-size: .875rem; font-weight: 700; color: var(--text-2); font-variant-numeric: tabular-nums; }
+    .passo h3 { margin: 0 0 8px; font-size: 1.25rem; font-weight: 600; letter-spacing: -0.015em; }
+    .passo p { margin: 0; color: var(--text-2); max-width: 34ch; }
+    .pagamentos { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: clamp(40px, 5vw, 56px); padding-top: 24px; border-top: 1px solid var(--line); }
+    .pagamentos h3 { margin: 0 12px 0 0; font-size: .9375rem; font-weight: 600; color: var(--text-2); }
+    .pag { display: inline-flex; align-items: center; gap: 8px; padding: 6px 2px; margin-right: 18px; font-size: .9375rem; }
+    .pag svg { width: 18px; height: 18px; color: var(--green); }
+
+    /* acessórios */
+    .acess { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); align-items: center; padding: clamp(28px, 4vw, 48px); border-radius: var(--radius-l); background: var(--surface); border: 1px solid var(--line); }
+    .acess h2 { margin: 0 0 14px; font-size: clamp(2rem, 3.8vw, 3rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; }
+    .acess p { margin: 0 0 28px; color: var(--text-2); max-width: 44ch; }
+    .acess-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+    .cats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; list-style: none; margin: 0; padding: 0; }
+    .cats li { display: flex; align-items: center; gap: 14px; padding: 18px; border-radius: 14px; background: var(--bg); border: 1px solid var(--line); font-weight: 500; }
+    .cats svg { width: 24px; height: 24px; color: var(--green); }
+
+    /* atendimento */
+    .atend { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; }
+    .painel { padding: clamp(24px, 3vw, 32px); border-radius: var(--radius-l); background: var(--surface); border: 1px solid var(--line); }
+    .painel h3 { margin: 0 0 18px; font-size: 1.125rem; font-weight: 600; }
+    .horario { width: 100%; border-collapse: collapse; }
+    .horario th, .horario td { padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 1rem; }
+    .horario tr:last-child th, .horario tr:last-child td { border-bottom: 0; }
+    .horario th { text-align: left; font-weight: 400; color: var(--text-2); }
+    .horario td { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
+    .horario .off { color: var(--text-3); font-weight: 400; }
+    .painel .obs { margin: 16px 0 0; font-size: .8125rem; color: var(--text-3); }
+    .info { display: flex; gap: 16px; }
+    .info + .info { margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--line); }
+    .info svg { width: 24px; height: 24px; color: var(--green); margin-top: 2px; }
+    .info b { display: block; margin-bottom: 4px; font-weight: 600; }
+    .info p { margin: 0; color: var(--text-2); }
+
+    /* chamada final */
+    .final { padding: 0 0 clamp(72px, 10vw, 128px); }
+    .final-box { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: end; padding: clamp(32px, 5vw, 64px); border-radius: 28px; background: var(--green); color: var(--ink); }
+    .final-box h2 { margin: 0 0 12px; font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 700; line-height: 1; letter-spacing: -0.04em; text-wrap: balance; max-width: 14ch; }
+    .final-box p { margin: 0; max-width: 40ch; font-size: 1.0625rem; color: #103d0c; }
+    .final-ctas { display: flex; flex-direction: column; gap: 10px; min-width: 260px; }
+    .btn-dark { background: var(--ink); color: var(--text); }
+    .btn-dark:hover { background: #1c1f1c; }
+    .btn-dark svg { color: var(--green); }
+    .final-box :focus-visible { outline-color: var(--ink); }
+
+    /* rodapé */
+    .rodape { padding: 40px 0 48px; border-top: 1px solid var(--line); font-size: .875rem; color: var(--text-3); }
+    .rodape .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; }
+    .rodape img { height: 28px; width: auto; }
+    .rodape nav { display: flex; flex-wrap: wrap; gap: 4px 20px; }
+    .rodape nav a { color: var(--text-2); text-decoration: none; padding: 10px 0; }
+    .rodape nav a:hover { color: var(--text); }
+
+    /* barra do orçamento */
+    .barra { position: fixed; left: 50%; bottom: max(16px, env(safe-area-inset-bottom)); z-index: 50; display: flex; align-items: center; gap: 14px; width: min(560px, calc(100vw - 24px)); padding: 8px 8px 8px 18px; border-radius: 14px; background: rgba(20, 22, 20, .94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid var(--line-2); box-shadow: 0 24px 48px -16px rgba(0, 0, 0, .9); translate: -50% 0; transition: translate .45s var(--ease), opacity .3s; }
+    .barra[hidden] { display: flex; visibility: hidden; opacity: 0; translate: -50% 140%; pointer-events: none; transition: translate .25s ease-in, opacity .2s, visibility 0s .25s; }
+    .barra p { margin: 0; flex: 1; min-width: 0; font-size: .9375rem; line-height: 1.3; overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow-wrap: anywhere; }
+    .barra p b { color: var(--green); font-weight: 600; }
+    .barra .btn { min-height: 46px; white-space: nowrap; }
+
+    /* responsivo */
+    @media (max-width: 1024px) {
+      .hero .wrap { grid-template-columns: minmax(0, 1fr); }
+      .orc { max-width: 620px; }
+      .desenho { max-width: 560px; }
+      .acess, .atend { grid-template-columns: minmax(0, 1fr); }
+    }
+    @media (max-width: 760px) {
+      body { font-size: 1rem; }
+      .nav { display: none; }
+      .topo .wrap { justify-content: space-between; height: 60px; }
+      .marca img { height: 26px; }
+      .proto { padding: 6px var(--gutter); }
+      .proto-longo { display: none; }
+      .proto-curto { display: inline; }
+      .hero .lead { margin-bottom: 16px; }
+      .hero .wrap { display: flex; flex-direction: column; align-items: stretch; gap: 0; }
+      .hero-txt { display: contents; }
+      .orc { margin-top: 24px; }
+      .direto { order: 1; margin-top: 24px; }
+      .direto span { flex: 1 1 100%; }
+      .so-longo { display: none; }
+      .so-curto { display: inline; }
+      .desenho { margin-top: 8px; }
+      .peca-btn::after { inset: -8px -4px; }
+      .peca-btn { min-height: 30px; padding: 0 8px 0 10px; font-size: .8125rem; gap: 4px; }
+      .peca-btn svg { width: 12px; height: 12px; }
+      .secao-head { grid-template-columns: minmax(0, 1fr); }
+      .secao-head p { justify-self: start; }
+      .grupos { grid-template-columns: minmax(0, 1fr); }
+      .grupos .bloco:nth-child(3) { grid-column: auto; grid-row: auto; }
+      .srv { padding: 16px; gap: 12px; }
+      .passos { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+      .passo { padding-left: 46px; }
+      .passo::before { position: absolute; left: 0; top: -2px; margin: 0; }
+      .cats li { padding: 14px; gap: 10px; font-size: .9375rem; }
+      .final-box { grid-template-columns: minmax(0, 1fr); }
+      .final-ctas { min-width: 0; }
+      .acess-ctas .btn { flex: 1 1 100%; }
+      .barra { padding-left: 14px; }
+      .barra p { font-size: .875rem; }
+    }
+  </style>
+</head>
+<body>
+  <script>document.documentElement.classList.add("js");</script>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-wa" viewBox="0 0 24 24"><path d="M12 2.6a9.4 9.4 0 0 0-8.1 14.2L2.6 21.4l4.7-1.2A9.4 9.4 0 1 0 12 2.6Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.7 7.5c.3-.6.6-.6.9-.6h.6c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .6l-.5.7c-.1.2-.2.4 0 .6.4.8 1 1.5 1.7 2.1.6.5 1.2.8 1.9 1.1.2.1.4 0 .5-.1l.7-.8c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.4.4 0 .5-.1 1.2-.6 1.6-.5.5-1.3.8-2.1.7-1-.1-2.6-.6-4.2-2-1.9-1.6-2.9-3.6-3.1-4.5-.2-.9.1-1.8.6-2.4Z" fill="currentColor"/></symbol>
+      <symbol id="i-ig" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5"/><circle cx="12" cy="12" r="4.1"/></g><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-tela" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="m9.5 7 2.5 3.5-1.5 2 3 4.5M12 10.5l3-1.5"/></g></symbol>
+      <symbol id="i-vidro" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M9 10l4-4M9 15l7-7"/></g></symbol>
+      <symbol id="i-tampa" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><rect x="8.3" y="4.8" width="5" height="5" rx="1.4"/></g></symbol>
+      <symbol id="i-bateria" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="7" width="17" height="10" rx="2.5"/><path d="M21.5 10.5v3M11.5 9 9.5 12.2h3l-2 3"/></g></symbol>
+      <symbol id="i-carga" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="10" width="10" height="8" rx="2"/><path d="M10 10V7.5M14 10V7.5M12 18v3.5M9.5 14h5"/></g></symbol>
+      <symbol id="i-placa" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="6.5" width="11" height="11" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9.5 3v3.5M14.5 3v3.5M9.5 17.5V21M14.5 17.5V21M3 9.5h3.5M3 14.5h3.5M17.5 9.5H21M17.5 14.5H21"/></g></symbol>
+      <symbol id="i-camera" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="9" cy="9" r="2.6"/><circle cx="9" cy="15.5" r="2.6"/><circle cx="15.5" cy="12.2" r="2.6"/></g></symbol>
+      <symbol id="i-faceid" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8V5.5A2.5 2.5 0 0 1 5.5 3H8M16 3h2.5A2.5 2.5 0 0 1 21 5.5V8M21 16v2.5a2.5 2.5 0 0 1-2.5 2.5H16M8 21H5.5A2.5 2.5 0 0 1 3 18.5V16M9 9v1.5M15 9v1.5M12 9v4h-1M9 15.5a4.5 4.5 0 0 0 6 0"/></g></symbol>
+      <symbol id="i-audio" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5h3l4.5-4v13l-4.5-4H4z"/><path d="M15 9a4 4 0 0 1 0 6M17.8 6.5a7.5 7.5 0 0 1 0 11"/></g></symbol>
+      <symbol id="i-botoes" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="11" height="19" rx="2.5"/><path d="M4.5 6.5v3M4.5 12v4M20.5 8v4"/></g></symbol>
+      <symbol id="i-capinha" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5.5" y="2.5" width="13" height="19" rx="3"/><rect x="8" y="5" width="4.5" height="4.5" rx="1.2"/></g></symbol>
+      <symbol id="i-pelicula" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M3 6.5v13a2 2 0 0 0 2 2M10 19h4"/></g></symbol>
+      <symbol id="i-carregador" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="8" width="14" height="13" rx="3"/><path d="M9.5 8V3.5M14.5 8V3.5M10 15h4"/></g></symbol>
+      <symbol id="i-fone" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4.5" height="6.5" rx="1.8"/><rect x="16.5" y="14" width="4.5" height="6.5" rx="1.8"/></g></symbol>
+      <symbol id="i-pix" viewBox="0 0 24 24"><path d="M12 2.8 21.2 12 12 21.2 2.8 12ZM7.5 7.5 12 12l4.5-4.5M7.5 16.5 12 12l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+      <symbol id="i-card" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><rect x="2.8" y="5.5" width="18.4" height="13" rx="2.4"/><path d="M2.8 9.8h18.4M6.5 15h4"/></g></symbol>
+      <symbol id="i-cash" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="2.8" y="6" width="18.4" height="12" rx="2"/><circle cx="12" cy="12" r="2.6"/></g></symbol>
+      <symbol id="i-devices" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3.5" width="9" height="17" rx="2"/><rect x="14" y="7.5" width="7" height="13" rx="2"/></g></symbol>
+      <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5.5h16v10.5H10l-4.5 3.5V16H4Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+      <symbol id="i-hand" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2.5" width="9" height="15" rx="2"/><path d="M11 15h3M8 11l-2.8 2.4a2 2 0 0 0-.2 2.8l3.6 4.3c.6.7 1.4 1 2.3 1H15"/></g></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></g></symbol>
+    </defs>
+  </svg>
+
+  <p class="proto"><b>Protótipo.</b> <span class="proto-longo">Contatos, catálogo, horários e parte da lista de serviços são de exemplo.</span><span class="proto-curto">Contatos e horários de exemplo.</span></p>
+
+  <header class="topo">
+    <div class="wrap">
+      <a class="marca" href="#topo" aria-label="Jeffdazcapinha, início"><img src="brand/logo-wordmark.png" alt="Jeffdazcapinha — Acessórios para celular" width="472" height="70"></a>
+      <ul class="nav">
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#como-funciona">Como funciona</a></li>
+        <li><a href="#acessorios">Acessórios</a></li>
+        <li><a href="#atendimento">Atendimento</a></li>
+      </ul>
+      <a class="btn btn-primary btn-sm" href="#orcamento">Pedir orçamento</a>
+    </div>
+  </header>
+
+  <main id="topo">
+    <section class="hero" aria-labelledby="titulo">
+      <div class="wrap">
+        <div class="hero-txt">
+          <h1 id="titulo">Celular quebrado? <em>A gente conserta.</em></h1>
+          <p class="lead">Assistência técnica para iPhone e Android, da troca de tela ao reparo em placa. Monte o orçamento e mande pronto pelo WhatsApp.</p>
+          <p class="direto"><span>Prefere chamar direto?</span>
+            <a class="btn btn-secondary btn-sm" id="cta-wa" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+            <a class="btn btn-secondary btn-sm" href="https://instagram.com/jeffdazcapinha" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ig"/></svg>Instagram</a>
+          </p>
+
+          <div class="desenho" id="desenho" role="group" aria-label="Peças do celular: toque na peça com defeito para incluir no orçamento">
+            <svg viewBox="0 0 600 380" aria-hidden="true">
+              <g transform="translate(0 24)">
+                <g class="tela-g" data-peca="tela">
+                  <rect x="30" y="20" width="150" height="320" rx="24"/>
+                  <rect x="41" y="31" width="128" height="298" rx="15"/>
+                  <rect x="87" y="41" width="36" height="10" rx="5"/>
+                  <path class="vazio racha" pathLength="1" d="M66 124 92 108l18 20 22-28 26 14M110 128l-8 30 20 28M110 128l30 16 26-8M92 108 80 84"/>
+                </g>
+                <path class="flex" d="M176 104c22 0 26 8 58 8M176 122c22 0 30 4 58 4"/>
+                <rect class="corpo" x="215" y="20" width="150" height="320" rx="24"/>
+                <rect class="corpo-in" x="223" y="28" width="134" height="304" rx="18"/>
+                <g class="furo"><circle cx="234" cy="316" r="1.6"/><circle cx="242" cy="316" r="1.6"/><circle cx="250" cy="316" r="1.6"/><circle cx="330" cy="316" r="1.6"/><circle cx="338" cy="316" r="1.6"/><circle cx="346" cy="316" r="1.6"/></g>
+                <g data-peca="placa">
+                  <path d="M288 36h55a8 8 0 0 1 8 8v78a8 8 0 0 1-8 8H237a8 8 0 0 1-8-8v-20a8 8 0 0 1 8-8h43V44a8 8 0 0 1 8-8Z"/>
+                  <rect x="298" y="48" width="24" height="24" rx="3"/>
+                  <rect x="329" y="50" width="13" height="34" rx="2"/>
+                  <rect x="298" y="84" width="24" height="10" rx="2"/>
+                  <rect x="242" y="104" width="34" height="16" rx="2"/>
+                </g>
+                <g data-peca="camera">
+                  <rect x="232" y="36" width="44" height="50" rx="11"/>
+                  <circle cx="245" cy="50" r="7.5"/>
+                  <circle cx="245" cy="72" r="7.5"/>
+                  <circle cx="264" cy="61" r="7.5"/>
+                </g>
+                <g data-peca="bateria">
+                  <rect x="235" y="144" width="110" height="150" rx="10"/>
+                  <rect x="318" y="128" width="16" height="16" rx="2"/>
+                  <path class="vazio" d="M294 196l-12 24h16l-12 24"/>
+                </g>
+                <g data-peca="carga">
+                  <rect x="262" y="306" width="56" height="20" rx="7"/>
+                  <path class="vazio" d="M279 316h22"/>
+                </g>
+                <path class="guia" data-guia="camera" pathLength="1" style="--i:0" d="M272 40 296 8h96"/>
+                <path class="guia" data-guia="placa" pathLength="1" style="--i:1" d="M351 100h41"/>
+                <path class="guia" data-guia="bateria" pathLength="1" style="--i:2" d="M345 220h47"/>
+                <path class="guia" data-guia="carga" pathLength="1" style="--i:3" d="M318 316h74"/>
+                <circle class="guia-ponto" data-guia="camera" style="--i:0" cx="272" cy="40" r="3"/>
+                <circle class="guia-ponto" data-guia="placa" style="--i:1" cx="351" cy="100" r="3"/>
+                <circle class="guia-ponto" data-guia="bateria" style="--i:2" cx="345" cy="220" r="3"/>
+                <circle class="guia-ponto" data-guia="carga" style="--i:3" cx="318" cy="316" r="3"/>
+              </g>
+            </svg>
+            <button class="peca-btn peca-btn--centro" type="button" data-serv="tela" aria-pressed="false" style="--i:0;left:17.5%;top:72%">Tela<svg class="mais-ico" aria-hidden="true"><use href="#i-plus"/></svg><svg class="ok" aria-hidden="true"><use href="#i-check"/></svg></button>
+            <button class="peca-btn" type="button" data-serv="camera" aria-pressed="false" style="--i:1;left:66%;top:8.4%">Câmera<svg class="mais-ico" aria-hidden="true"><use href="#i-plus"/></svg><svg class="ok" aria-hidden="true"><use href="#i-check"/></svg></button>
+            <button class="peca-btn" type="button" data-serv="placa" aria-pressed="false" style="--i:2;left:66%;top:32.6%">Placa<svg class="mais-ico" aria-hidden="true"><use href="#i-plus"/></svg><svg class="ok" aria-hidden="true"><use href="#i-check"/></svg></button>
+            <button class="peca-btn" type="button" data-serv="bateria" aria-pressed="false" style="--i:3;left:66%;top:64.2%">Bateria<svg class="mais-ico" aria-hidden="true"><use href="#i-plus"/></svg><svg class="ok" aria-hidden="true"><use href="#i-check"/></svg></button>
+            <button class="peca-btn" type="button" data-serv="carga" aria-pressed="false" style="--i:4;left:66%;top:89.5%"><span class="so-longo">Dock de carga</span><span class="so-curto">Carga</span><svg class="mais-ico" aria-hidden="true"><use href="#i-plus"/></svg><svg class="ok" aria-hidden="true"><use href="#i-check"/></svg></button>
+          </div>
+          <p class="desenho-nota">Toque na peça com defeito e ela entra no orçamento.</p>
+        </div>
+
+        <form class="orc" id="orcamento" aria-labelledby="orc-titulo" novalidate>
+          <div class="orc-topo">
+            <h2 id="orc-titulo">Monte seu orçamento</h2>
+            <p>Valor e prazo vêm na resposta, pelo WhatsApp.</p>
+          </div>
+          <ol class="etapas">
+            <li class="etapa" id="etapa-1">
+              <label class="campo">
+                <span class="rotulo"><span class="num" aria-hidden="true">1</span>Qual é o seu celular?</span>
+                <input class="entrada" id="modelo" type="text" list="modelos" autocomplete="off" placeholder="Ex.: iPhone 13, Galaxy A15" enterkeyhint="next">
+              </label>
+            </li>
+            <li class="etapa" id="etapa-2">
+              <fieldset class="grupo">
+                <legend class="rotulo"><span class="num" aria-hidden="true">2</span>O que aconteceu?</legend>
+                <ul class="chips" id="chips"></ul>
+                <button class="outro" id="outro" type="button" aria-expanded="false" aria-controls="outros"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Outro problema</span></button>
+                <div class="outros" id="outros" hidden>
+                  <ul class="chips" id="chips-2"></ul>
+                  <label class="campo">
+                    <span class="rotulo">Conte o que aconteceu (opcional)</span>
+                    <textarea class="entrada" id="obs" rows="2" placeholder="Ex.: caiu no chão e a tela ficou preta"></textarea>
+                  </label>
+                </div>
+              </fieldset>
+            </li>
+            <li class="etapa" id="etapa-3">
+              <p class="rotulo"><span class="num" aria-hidden="true">3</span>Revise e envie</p>
+              <details class="previa" id="previa" hidden>
+                <summary><svg class="wa" aria-hidden="true"><use href="#i-wa"/></svg>Ver a mensagem<svg class="seta" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+                <p class="balao" id="balao"></p>
+              </details>
+              <a class="btn btn-primary" id="orc-wa" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg><span id="orc-wa-txt">Enviar pelo WhatsApp</span></a>
+              <p class="orc-nota" id="orc-nota" aria-live="polite">Sem cadastro: a conversa continua no WhatsApp.</p>
+            </li>
+          </ol>
+        </form>
+      </div>
+    </section>
+
+    <section class="secao" id="servicos" aria-labelledby="serv-titulo">
+      <div class="wrap">
+        <div class="secao-head">
+          <h2 id="serv-titulo">Serviços de assistência</h2>
+          <p>Toque no que o seu celular precisa e o serviço entra no orçamento.</p>
+        </div>
+        <div class="grupos" id="grupos"></div>
+        <p class="srv-nota">O defeito não está na lista? <a href="#" data-wa-geral target="_blank" rel="noopener">Descreva pelo WhatsApp</a> e a gente avalia.</p>
+      </div>
+    </section>
+
+    <section class="secao" id="como-funciona" aria-labelledby="func-titulo">
+      <div class="wrap">
+        <div class="secao-head">
+          <h2 id="func-titulo">Como funciona</h2>
+          <p>Do defeito ao celular de volta na sua mão, tudo combinado na conversa.</p>
+        </div>
+        <ol class="passos">
+          <li class="passo"><h3>Conte o problema</h3><p>Monte o orçamento aqui no site ou descreva o defeito na mensagem, com o modelo do celular.</p></li>
+          <li class="passo"><h3>Receba o orçamento</h3><p>A Jeffdazcapinha responde com o valor e o prazo do conserto. Você decide se faz.</p></li>
+          <li class="passo"><h3>Combine a entrega</h3><p>Onde e quando deixar e retirar o aparelho é combinado pelo WhatsApp.</p></li>
+        </ol>
+        <div class="pagamentos">
+          <h3>Formas de pagamento</h3>
+          <span class="pag"><svg aria-hidden="true"><use href="#i-pix"/></svg>Pix</span>
+          <span class="pag"><svg aria-hidden="true"><use href="#i-card"/></svg>Crédito</span>
+          <span class="pag"><svg aria-hidden="true"><use href="#i-card"/></svg>Débito</span>
+          <span class="pag"><svg aria-hidden="true"><use href="#i-cash"/></svg>Dinheiro</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="secao" id="acessorios" aria-labelledby="acess-titulo">
+      <div class="wrap">
+        <div class="acess">
+          <div>
+            <h2 id="acess-titulo">Acessórios</h2>
+            <p>Capinhas, películas, carregadores, cabos e fones. O catálogo completo, com fotos e preços, fica no WhatsApp: escolha por lá e feche o pedido na conversa.</p>
+            <div class="acess-ctas">
+              <a class="btn btn-primary" data-catalogo href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Abrir catálogo</a>
+              <a class="btn btn-secondary" href="https://instagram.com/jeffdazcapinha" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ig"/></svg>Novidades no Instagram</a>
+            </div>
+          </div>
+          <ul class="cats" aria-label="Categorias do catálogo">
+            <li><svg aria-hidden="true"><use href="#i-capinha"/></svg>Capinhas</li>
+            <li><svg aria-hidden="true"><use href="#i-pelicula"/></svg>Películas</li>
+            <li><svg aria-hidden="true"><use href="#i-carregador"/></svg>Carregadores e cabos</li>
+            <li><svg aria-hidden="true"><use href="#i-fone"/></svg>Fones</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="secao" id="atendimento" aria-labelledby="atend-titulo">
+      <div class="wrap">
+        <div class="secao-head">
+          <h2 id="atend-titulo">Atendimento</h2>
+          <p>Todo o atendimento é por mensagem: orçamento, entrega do aparelho e pedido de acessórios.</p>
+        </div>
+        <div class="atend">
+          <div class="painel">
+            <h3>Horário de atendimento</h3>
+            <table class="horario">
+              <caption class="sr-only">Horário de atendimento (exemplo)</caption>
+              <tbody>
+                <tr><th scope="row">Segunda a sexta</th><td>9h às 19h</td></tr>
+                <tr><th scope="row">Sábado</th><td>9h às 14h</td></tr>
+                <tr><th scope="row">Domingo e feriados</th><td class="off">Sem atendimento</td></tr>
+              </tbody>
+            </table>
+            <p class="obs">Horários de exemplo. Mensagens fora do horário são respondidas no próximo atendimento.</p>
+          </div>
+          <div class="painel">
+            <div class="info"><svg aria-hidden="true"><use href="#i-hand"/></svg><div><b>Entrega e retirada do aparelho</b><p>Combinadas pelo WhatsApp, junto com o orçamento.</p></div></div>
+            <div class="info"><svg aria-hidden="true"><use href="#i-chat"/></svg><div><b>WhatsApp ou Instagram</b><p>Pode chamar em qualquer um dos dois. Para acessórios, o catálogo do WhatsApp mostra o que tem.</p></div></div>
+            <div class="info"><svg aria-hidden="true"><use href="#i-clock"/></svg><div><b>Valor e prazo</b><p>Informados no orçamento, antes de qualquer conserto.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final" aria-labelledby="final-titulo">
+      <div class="wrap">
+        <div class="final-box">
+          <div>
+            <h2 id="final-titulo">Celular com defeito? Manda pra gente.</h2>
+            <p>Diga o modelo e o que aconteceu: o orçamento vem pela conversa.</p>
+          </div>
+          <div class="final-ctas">
+            <a class="btn btn-dark" id="fim-wa" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Chamar no WhatsApp</a>
+            <a class="btn btn-dark" href="https://instagram.com/jeffdazcapinha" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ig"/></svg>@jeffdazcapinha</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="wrap">
+      <img src="brand/logo-wordmark.png" alt="Jeffdazcapinha" width="472" height="70" loading="lazy">
+      <nav aria-label="Rodapé">
+        <a href="#servicos">Serviços</a>
+        <a href="#acessorios">Acessórios</a>
+        <a href="#atendimento">Atendimento</a>
+        <a href="https://instagram.com/jeffdazcapinha" target="_blank" rel="noopener">Instagram</a>
+      </nav>
+      <span>© 2026 Jeffdazcapinha · Protótipo com conteúdo de exemplo</span>
+    </div>
+  </footer>
+
+  <div class="barra" id="barra" hidden>
+    <p id="barra-txt"></p>
+    <a class="btn btn-primary" id="barra-wa" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Enviar orçamento</a>
+  </div>
+
+  <datalist id="modelos">
+    <option value="iPhone 11"><option value="iPhone 12"><option value="iPhone 13"><option value="iPhone 14"><option value="iPhone 15"><option value="iPhone 16">
+    <option value="Galaxy A06"><option value="Galaxy A15"><option value="Galaxy A25"><option value="Galaxy A35"><option value="Galaxy A55"><option value="Galaxy S24">
+    <option value="Moto G24"><option value="Moto G54"><option value="Moto G84"><option value="Redmi 13C"><option value="Redmi Note 13"><option value="Poco X6">
+  </datalist>
+
+  <script>
+  (() => {
+    // Número de exemplo: trocar pelo WhatsApp real (formato 55 + DDD + número).
+    const WHATSAPP = "5500000000000";
+    const CATALOGO = `https://wa.me/c/${WHATSAPP}`;
+
+    const servicos = [
+      { id: "tela", nome: "Troca de tela", chip: "Tela trincada ou sem imagem", desc: "Tela trincada, manchada, sem imagem ou touch falhando." },
+      { id: "vidro", nome: "Troca de vidro", chip: "Só o vidro quebrou", desc: "O vidro da frente quebrou, mas a imagem continua boa." },
+      { id: "tampa", nome: "Troca de tampa traseira", chip: "Traseira quebrada", desc: "Vidro de trás quebrado, trincado ou soltando." },
+      { id: "bateria", nome: "Troca de bateria", chip: "Bateria fraca", desc: "Descarrega rápido, desliga sozinho ou está estufada." },
+      { id: "carga", nome: "Reparo no dock de carga", chip: "Não carrega", desc: "Não carrega, carrega só numa posição ou com mau contato." },
+      { id: "placa", nome: "Reparo em placa", chip: "Não liga ou molhou", desc: "Não liga, reinicia sozinho, ficou sem sinal ou molhou." },
+      { id: "camera", nome: "Reparo em câmeras", chip: "Câmera com defeito", desc: "Câmera embaçada, tremendo, com mancha ou que não abre." },
+      { id: "faceid", nome: "Reparo em Face ID", chip: "Face ID parou", desc: "Face ID indisponível ou parou de reconhecer o rosto.", tag: "Só iPhone" },
+      { id: "audio", nome: "Alto-falante e microfone", chip: "Som ou microfone", desc: "Som baixo, chiando ou a pessoa não te ouve na ligação.", tag: "A confirmar" },
+      { id: "botoes", nome: "Botões", chip: "Botão travado", desc: "Botão de ligar ou de volume travado ou sem resposta.", tag: "A confirmar" }
+    ];
+    const GRUPOS = [
+      { t: "Tela e carcaça", ids: ["tela", "vidro", "tampa"] },
+      { t: "Bateria e carga", ids: ["bateria", "carga"] },
+      { t: "Por dentro", ids: ["placa", "camera", "faceid", "audio", "botoes"] }
+    ];
+    const porId = Object.fromEntries(servicos.map((s) => [s.id, s]));
+    // Os cinco defeitos mais comuns ficam à vista; o resto abre em "Outro problema".
+    const COMUNS = ["tela", "vidro", "bateria", "carga", "placa"];
+    const esc = (t) => t.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+
+    const chip = (s) => `<li><label class="chip"><input type="checkbox" value="${s.id}"><span>${s.chip}</span></label></li>`;
+    document.getElementById("chips").innerHTML = COMUNS.map((id) => chip(porId[id])).join("");
+    document.getElementById("chips-2").innerHTML = servicos.filter((s) => !COMUNS.includes(s.id)).map(chip).join("");
+
+    document.getElementById("grupos").innerHTML = GRUPOS.map((g) => `<div class="bloco"><h3>${g.t}</h3><ul>${g.ids.map((id) => {
+      const s = porId[id];
+      return `<li><button class="srv" type="button" data-serv="${s.id}" aria-pressed="false">
+          <span class="srv-ico" aria-hidden="true"><svg><use href="#i-${s.id}"/></svg></span>
+          <span class="srv-txt"><b>${s.nome}</b><span>${s.desc}</span>${s.tag ? `<i>${s.tag}</i>` : ""}</span>
+          <span class="srv-add" aria-hidden="true"><svg class="mais-ico"><use href="#i-plus"/></svg><svg class="ok"><use href="#i-check"/></svg></span>
+        </button></li>`;
+    }).join("")}</ul></div>`).join("");
+
+    document.querySelectorAll("[data-catalogo]").forEach((a) => { a.href = CATALOGO; });
+
+    // Estado do orçamento
+    const sel = new Set();
+    const campo = document.getElementById("modelo");
+    const obs = document.getElementById("obs");
+    const nota = document.getElementById("orc-nota");
+    const NOTA = nota.textContent;
+    const previa = document.getElementById("previa");
+    const outro = document.getElementById("outro");
+    const outros = document.getElementById("outros");
+    const telaGrande = window.matchMedia("(min-width: 1025px)");
+    function abrirOutros(on) {
+      outros.hidden = !on;
+      outro.setAttribute("aria-expanded", String(on));
+      outro.querySelector("span").textContent = on ? "Menos opções" : "Outro problema";
+    }
+    outro.addEventListener("click", () => abrirOutros(outros.hidden));
+    let avisou = false;
+    try { campo.value = localStorage.getItem("jdz-modelo") || ""; } catch (e) {}
+    const wa = (txt) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(txt)}`;
+    const nomes = () => servicos.filter((s) => sel.has(s.id)).map((s) => s.nome.charAt(0).toLowerCase() + s.nome.slice(1));
+
+    function atualizar() {
+      const m = campo.value.trim();
+      const lista = nomes();
+      const o = obs.value.trim();
+      let txt = "Oi, Jeff! Vim pelo site e quero um orçamento.";
+      if (m) txt += `\nAparelho: ${m}`;
+      if (lista.length) txt += `\n${lista.length > 1 ? "Serviços" : "Serviço"}: ${lista.join(", ")}`;
+      if (o) txt += `\nO que aconteceu: ${o}`;
+      const link = wa(txt);
+      document.getElementById("orc-wa").href = link;
+      document.getElementById("barra-wa").href = link;
+      document.getElementById("balao").innerHTML = esc(txt) + "<small>agora</small>";
+      const temOS = Boolean(m || lista.length || o);
+      // A prévia só aparece quando há algo para mostrar; no computador ela já vem aberta.
+      if (temOS && previa.hidden) { previa.hidden = false; if (telaGrande.matches) previa.open = true; }
+      if (!temOS) previa.hidden = true;
+      document.getElementById("etapa-1").classList.toggle("ok", Boolean(m));
+      document.getElementById("etapa-2").classList.toggle("ok", Boolean(lista.length || o));
+      const geral = "Oi, Jeff! Vim pelo site e queria tirar uma dúvida." + (m ? `\nAparelho: ${m}` : "");
+      // Com qualquer coisa preenchida, todo botão de WhatsApp leva o orçamento.
+      ["cta-wa", "fim-wa"].forEach((id) => { document.getElementById(id).href = temOS ? link : wa(geral); });
+      document.querySelectorAll("[data-wa-geral]").forEach((a) => { a.href = wa(geral); });
+      const qtd = lista.length === 1 ? "1 serviço" : lista.length + " serviços";
+      document.getElementById("orc-wa-txt").textContent = lista.length ? `Enviar orçamento · ${qtd}` : "Enviar pelo WhatsApp";
+      document.getElementById("barra-txt").innerHTML = `<b>${qtd}</b>${m ? " · " + esc(m) : " no orçamento"}`;
+      mostrarBarra();
+    }
+
+    function marcar(id, on) {
+      on ? sel.add(id) : sel.delete(id);
+      try { localStorage.setItem("jdz-servicos", JSON.stringify([...sel])); } catch (e) {}
+      document.querySelectorAll(`button[data-serv="${id}"]`).forEach((b) => b.setAttribute("aria-pressed", String(on)));
+      document.querySelectorAll(`[data-peca="${id}"], [data-guia="${id}"]`).forEach((p) => p.classList.toggle("on", on));
+      const c = document.querySelector(`.chip input[value="${id}"]`);
+      if (c) c.checked = on;
+      if (on && !COMUNS.includes(id) && outros.hidden) abrirOutros(true);
+      atualizar();
+    }
+
+    document.getElementById("orcamento").addEventListener("change", (e) => { if (e.target.matches(".chip input")) marcar(e.target.value, e.target.checked); });
+    // Botões de serviço (lista e desenho) e as próprias peças do desenho
+    document.addEventListener("click", (e) => {
+      const b = e.target.closest("button[data-serv]");
+      if (b) { marcar(b.dataset.serv, b.getAttribute("aria-pressed") !== "true"); return; }
+      const p = e.target.closest("[data-peca]");
+      if (p) marcar(p.dataset.peca, !sel.has(p.dataset.peca));
+    });
+    campo.addEventListener("input", () => {
+      try { localStorage.setItem("jdz-modelo", campo.value); } catch (e) {}
+      if (nota.classList.contains("aviso")) { nota.classList.remove("aviso"); campo.classList.remove("entrada--falta"); nota.textContent = NOTA; }
+      atualizar();
+    });
+    obs.addEventListener("input", atualizar);
+    document.getElementById("orcamento").addEventListener("submit", (e) => e.preventDefault());
+
+    // Sem aparelho: avisa uma vez e leva ao campo; o segundo toque envia assim mesmo.
+    document.getElementById("orc-wa").addEventListener("click", (e) => {
+      if (campo.value.trim() || avisou) return;
+      e.preventDefault();
+      avisou = true;
+      nota.classList.add("aviso");
+      nota.textContent = "Diga o modelo do celular para o orçamento sair mais rápido. Ou toque de novo para enviar assim mesmo.";
+      campo.classList.add("entrada--falta");
+      campo.focus();
+    });
+
+    // Barra do orçamento quando o formulário sai da tela
+    const barra = document.getElementById("barra");
+    let formVisivel = true;
+    function mostrarBarra() { barra.hidden = !(sel.size > 0 && !formVisivel); }
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(([en]) => { formVisivel = en.isIntersecting; mostrarBarra(); }, { threshold: 0.1 }).observe(document.getElementById("orcamento"));
+    }
+
+    // A abertura do desenho roda uma vez; depois as peças só respondem à seleção.
+    const desenho = document.getElementById("desenho");
+    const reduzir = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduzir) desenho.classList.add("pronto");
+    else setTimeout(() => desenho.classList.add("pronto"), 2100);
+
+    // Serviços marcados voltam se a pessoa recarregar ou voltar depois.
+    try { JSON.parse(localStorage.getItem("jdz-servicos") || "[]").forEach((id) => { if (porId[id]) marcar(id, true); }); } catch (e) {}
+    atualizar();
+  })();
+  </script>
+</body>
+</html>
