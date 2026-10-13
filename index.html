@@ -264,23 +264,6 @@
     .cats li { display: flex; align-items: center; gap: 14px; padding: 18px; border-radius: 14px; background: var(--bg); border: 1px solid var(--line); font-weight: 500; }
     .cats svg { width: 24px; height: 24px; color: var(--green); }
 
-    /* atendimento */
-    .atend { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; }
-    .painel { padding: clamp(24px, 3vw, 32px); border-radius: var(--radius-l); background: var(--surface); border: 1px solid var(--line); }
-    .painel h3 { margin: 0 0 18px; font-size: 1.125rem; font-weight: 600; }
-    .horario { width: 100%; border-collapse: collapse; }
-    .horario th, .horario td { padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 1rem; }
-    .horario tr:last-child th, .horario tr:last-child td { border-bottom: 0; }
-    .horario th { text-align: left; font-weight: 400; color: var(--text-2); }
-    .horario td { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
-    .horario .off { color: var(--text-3); font-weight: 400; }
-    .painel .obs { margin: 16px 0 0; font-size: .8125rem; color: var(--text-3); }
-    .info { display: flex; gap: 16px; }
-    .info + .info { margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--line); }
-    .info svg { width: 24px; height: 24px; color: var(--green); margin-top: 2px; }
-    .info b { display: block; margin-bottom: 4px; font-weight: 600; }
-    .info p { margin: 0; color: var(--text-2); }
-
     /* chamada final */
     .final { padding: 0 0 clamp(72px, 10vw, 128px); }
     .final-box { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: end; padding: clamp(32px, 5vw, 64px); border-radius: 28px; background: var(--green); color: var(--ink); }
@@ -312,7 +295,7 @@
       .hero .wrap { grid-template-columns: minmax(0, 1fr); }
       .orc { max-width: 620px; }
       .desenho { max-width: 560px; }
-      .acess, .atend { grid-template-columns: minmax(0, 1fr); }
+      .acess { grid-template-columns: minmax(0, 1fr); }
     }
     @media (max-width: 760px) {
       body { font-size: 1rem; }
@@ -378,12 +361,10 @@
       <symbol id="i-cash" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="2.8" y="6" width="18.4" height="12" rx="2"/><circle cx="12" cy="12" r="2.6"/></g></symbol>
       <symbol id="i-devices" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3.5" width="9" height="17" rx="2"/><rect x="14" y="7.5" width="7" height="13" rx="2"/></g></symbol>
       <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5.5h16v10.5H10l-4.5 3.5V16H4Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
-      <symbol id="i-hand" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2.5" width="9" height="15" rx="2"/><path d="M11 15h3M8 11l-2.8 2.4a2 2 0 0 0-.2 2.8l3.6 4.3c.6.7 1.4 1 2.3 1H15"/></g></symbol>
-      <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></g></symbol>
     </defs>
   </svg>
 
-  <p class="proto"><b>Protótipo.</b> <span class="proto-longo">Horários, catálogo e parte da lista de serviços ainda são de exemplo.</span><span class="proto-curto">Horários de exemplo.</span></p>
+  <p class="proto"><b>Protótipo.</b> <span class="proto-longo">Catálogo e parte da lista de serviços ainda estão em confirmação.</span><span class="proto-curto">Serviços em confirmação.</span></p>
 
   <header class="topo">
     <div class="wrap">
@@ -392,7 +373,6 @@
         <li><a href="#servicos">Serviços</a></li>
         <li><a href="#como-funciona">Como funciona</a></li>
         <li><a href="#acessorios">Acessórios</a></li>
-        <li><a href="#atendimento">Atendimento</a></li>
       </ul>
       <a class="btn btn-primary btn-sm" href="#orcamento">Pedir orçamento</a>
     </div>
@@ -556,34 +536,6 @@
       </div>
     </section>
 
-    <section class="secao" id="atendimento" aria-labelledby="atend-titulo">
-      <div class="wrap">
-        <div class="secao-head">
-          <h2 id="atend-titulo">Atendimento</h2>
-          <p>Todo o atendimento é por mensagem: orçamento, entrega do aparelho e pedido de acessórios.</p>
-        </div>
-        <div class="atend">
-          <div class="painel">
-            <h3>Horário de atendimento</h3>
-            <table class="horario">
-              <caption class="sr-only">Horário de atendimento (exemplo)</caption>
-              <tbody>
-                <tr><th scope="row">Segunda a sexta</th><td>9h às 19h</td></tr>
-                <tr><th scope="row">Sábado</th><td>9h às 14h</td></tr>
-                <tr><th scope="row">Domingo e feriados</th><td class="off">Sem atendimento</td></tr>
-              </tbody>
-            </table>
-            <p class="obs">Horários de exemplo. Mensagens fora do horário são respondidas no próximo atendimento.</p>
-          </div>
-          <div class="painel">
-            <div class="info"><svg aria-hidden="true"><use href="#i-hand"/></svg><div><b>Entrega e retirada do aparelho</b><p>Combinadas pelo WhatsApp, junto com o orçamento.</p></div></div>
-            <div class="info"><svg aria-hidden="true"><use href="#i-chat"/></svg><div><b>WhatsApp ou Instagram</b><p>Pode chamar em qualquer um dos dois. Para acessórios, o catálogo do WhatsApp mostra o que tem.</p></div></div>
-            <div class="info"><svg aria-hidden="true"><use href="#i-clock"/></svg><div><b>Valor e prazo</b><p>Informados no orçamento, antes de qualquer conserto.</p></div></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="final" aria-labelledby="final-titulo">
       <div class="wrap">
         <div class="final-box">
@@ -606,7 +558,6 @@
       <nav aria-label="Rodapé">
         <a href="#servicos">Serviços</a>
         <a href="#acessorios">Acessórios</a>
-        <a href="#atendimento">Atendimento</a>
         <a href="https://instagram.com/jeffdazcapinha" target="_blank" rel="noopener">Instagram</a>
       </nav>
       <span>© 2026 Jeffdazcapinha · Protótipo com conteúdo de exemplo</span>
